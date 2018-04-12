@@ -1,30 +1,31 @@
 package application.tool;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.events.XMLEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class XmlParser {
 
     final String RES_PATH = "res/xml/";
 
-    private int evenType;
-
-    public ObservableList<String> parsingAll(String caller) {
+    public ObservableList<String> parsingTopics(String caller) {
+        XMLInputFactory factory = XMLInputFactory.newInstance();
         try {
-            XMLStreamReader xmlr = XMLInputFactory.newInstance().createXMLStreamReader(caller, new FileInputStream(new File(RES_PATH + caller)));
+            XMLStreamReader reader = factory.createXMLStreamReader(new FileInputStream(RES_PATH + caller));
             ObservableList<String> items = FXCollections.observableArrayList();
-            while (xmlr.hasNext()) {
-                xmlr.next();
-                if (xmlr.hasText() && xmlr.getText().trim().length() > 0) {
-                    items.add(xmlr.getText());
+
+            while(reader.hasNext()) {
+                if(reader.getEventType() == XMLEvent.START_ELEMENT && "name".equals(reader.getLocalName())) {
+                    reader.next();
+                    items.add(reader.getText());
                 }
+                reader.next();
             }
             return items;
         } catch (FileNotFoundException | XMLStreamException ex) {
@@ -34,28 +35,38 @@ public class XmlParser {
     }
 
     public String parsingTopic(String caller, String topic) {
-        Boolean complete = false;
+/*
         try {
-            XMLStreamReader xmlr = XMLInputFactory.newInstance().createXMLStreamReader(caller, new FileInputStream(new File(RES_PATH + caller)));
-            String content = "";
-            while (xmlr.hasNext()) {
-                evenType = xmlr.next();
-                if (xmlr.hasText() && xmlr.getText().equals(topic)) {
-                    while (evenType != XMLEvent.END_ELEMENT) {
-                        evenType = xmlr.next();
-                        content += xmlr.getText();
-                    }
-                    System.out.println(content);
-                    complete = true;
-                }
-                if (complete) {
-                    break;
-                }
-            }
-            return content;
+
         } catch (FileNotFoundException | XMLStreamException ex) {
             ex.printStackTrace();
         }
+*/
         return null;
     }
 }
+
+/*
+        while(reader.hasNext()) {
+        int evenType = reader.getEventType();
+        switch (evenType) {
+        case XMLEvent.START_DOCUMENT:
+        System.out.println("Start Document");
+        break;
+        case XMLEvent.START_ELEMENT:
+        System.out.println("Start Element: " + reader.getName());
+        break;
+        case XMLEvent.END_ELEMENT:
+        System.out.println("End Element: " + reader.getName());
+        break;
+        case XMLEvent.CHARACTERS:
+        System.out.println("Characters: " + reader.getText());
+        break;
+        }
+
+        reader.next();
+        }
+        if(reader.getEventType() == XMLEvent.END_DOCUMENT) {
+        System.out.println("End Document");
+        }
+        */

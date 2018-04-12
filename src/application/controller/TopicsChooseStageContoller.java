@@ -45,7 +45,7 @@ public class TopicsChooseStageContoller implements Initializable {
     public void setItemsList(String caller){
         this.caller = caller;
         XmlParser parser = new XmlParser();
-        items = parser.parsingAll(caller);
+        items = parser.parsingTopics(caller);
         if (items != null) {
             topicsList.setItems(items);
         }
