@@ -1,6 +1,5 @@
 package application.tool;
 
-import application.controller.TopicSceneController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

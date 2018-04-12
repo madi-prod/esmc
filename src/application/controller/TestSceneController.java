@@ -1,6 +1,5 @@
 package application.controller;
 
-import application.tool.XmlParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
