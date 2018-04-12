@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -19,17 +21,16 @@ import java.util.ResourceBundle;
 public class TopicSceneController implements Initializable {
 
     @FXML
-    TextFlow textFlow;
+    TextArea textArea;
     @FXML
     Button closeBtn;
 
 
-    public void setTextFlow(String topic, String caller) {
+    public void setText(String topic, String caller) {
         XmlParser parser = new XmlParser();
         String content = parser.parsingTopic(caller, topic);
-        System.out.println(content);
         if (content != null) {
-            textFlow = new TextFlow(new Text(content));
+            textArea.setText(content);
         }
     }
 

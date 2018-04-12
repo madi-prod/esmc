@@ -35,13 +35,37 @@ public class XmlParser {
     }
 
     public String parsingTopic(String caller, String topic) {
-/*
-        try {
+        Boolean found = false;
 
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+        try {
+            XMLStreamReader reader = factory.createXMLStreamReader(new FileInputStream(RES_PATH + caller));
+
+            String content = "";
+            while(reader.hasNext()) {
+                if(reader.getEventType() == XMLEvent.START_ELEMENT && "name".equals(reader.getLocalName())) {
+                    reader.next();
+                    if(topic.equals(reader.getText())){
+                        reader.next();
+                        reader.next();
+                        while(reader.getEventType() != XMLEvent.END_ELEMENT){
+                            found = true;
+                            switch (reader.getEventType()){
+                                case XMLEvent.CHARACTERS:
+                                    content += reader.getText().trim();
+                            }
+                            reader.next();
+                        }
+                    }
+                }
+                if(found) {
+                    return content;
+                }
+                reader.next();
+            }
         } catch (FileNotFoundException | XMLStreamException ex) {
             ex.printStackTrace();
         }
-*/
         return null;
     }
 }

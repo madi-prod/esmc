@@ -34,7 +34,7 @@ public class TopicsChooseStageContoller implements Initializable {
         Parent page = loader.load();
 
         TopicSceneController controller = loader.getController();
-        controller.setTextFlow(chooseTopic, caller);
+        controller.setText(chooseTopic, caller);
         Scene scene = new Scene(page);
         Main.mainStage.hide();
         Main.mainStage.setTitle(chooseTopic);
