@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topics>
+        <topic>
+            <name>1. Методы оценки погрешности вычислений</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>2. Решение нелинейных уравнений</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>3. Решение систем уравнений</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>4. Параболическая интерполяция</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>5. Квадратическая интерполяция</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>6. Численное дифференцирование и интегрирование</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>7. Решение обыкновенных дифференциальных уравнений первого порядка</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>8. Решение систем обыкновенных дифференциальных уравнений первого порядка</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>9. Решение краевых задач</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>10. Обработка экспериментальных результатов. Регрессионный анализ</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>11. Дифференциальные уравнения в частных производных</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>12. Многомерная безусловная оптимизация</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>13. Транспортные задачи</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>14. Линейное программирование. Симплекс метод</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>15. Динамическое программирование</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>16. Сетевые модели</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>17. Моделирование случайных процессов</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>18. Системы массового обслуживания</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>19. Моделирование физических процессов с использованием программного обеспечения общего и специального назначения</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>20. Методы визуализации</name>
+            <content></content>
+        </topic>
+        <topic>
+            <name>21. Компьютерное моделирование</name>
+            <content></content>
+        </topic>
+</topics>
