@@ -19,26 +19,28 @@ public class MainSceneController implements Initializable {
     @FXML
     Button theoryBtn, labWorkBtn, testBtn, exitBtn;
 
-    public void handleButtonAction(ActionEvent actionEvent) throws IOException {
-        if (actionEvent.getSource() == exitBtn) {
-            Platform.exit();
-        } else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/chooseDialog.fxml"));
-            Parent page = loader.load();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-            TopicsChooseStageContoller controller = loader.getController();
-            controller.setItemsList(getCaller(actionEvent));
-
-            Scene scene = new Scene(page);
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Список тем");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
-            dialogStage.setScene(scene);
-            dialogStage.showAndWait();
-        }
     }
-    private String getCaller(ActionEvent actionEvent) {
+
+    public void openTheoryDialog(ActionEvent actionEvent) throws IOException {
+        initDialogStage(actionEvent);
+    }
+
+    public void openLabWorkDialog(ActionEvent actionEvent) throws IOException {
+        initDialogStage(actionEvent);
+    }
+
+    public void openTestDialog(ActionEvent actionEvent) throws IOException {
+        initDialogStage(actionEvent);
+    }
+
+    public void exit(ActionEvent actionEvent) {
+        Platform.exit();
+    }
+
+    private String getTopics(ActionEvent actionEvent) {
         if (actionEvent.getSource() == theoryBtn) {
             return "theoryTopics.xml";
         } else if (actionEvent.getSource() == labWorkBtn) {
@@ -50,8 +52,18 @@ public class MainSceneController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    private void initDialogStage(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/chooseDialog.fxml"));
+        Parent page = loader.load();
+        TopicsChooseStageContoller controller = loader.getController();
+        controller.setItemsList(getTopics(actionEvent));
+        Scene scene = new Scene(page);
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Список тем");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+        dialogStage.setScene(scene);
+        dialogStage.showAndWait();
     }
+
 }

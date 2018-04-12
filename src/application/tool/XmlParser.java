@@ -1,5 +1,6 @@
 package application.tool;
 
+import application.controller.TopicSceneController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -7,7 +8,6 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.events.XMLEvent;
-import java.io.*;
 
 public class XmlParser {
 
@@ -49,13 +49,15 @@ public class XmlParser {
                     if(topic.equals(reader.getText())){
                         reader.next();
                         reader.next();
-                        while(reader.getEventType() != XMLEvent.END_ELEMENT){
+                       while(reader.getEventType() != XMLEvent.END_ELEMENT){
                             found = true;
                             switch (reader.getEventType()){
                                 case XMLEvent.CHARACTERS:
-                                    content += reader.getText().trim();
+                                    if(!"".equals(reader.getText().trim()))
+                                    content += reader.getText();
                             }
                             reader.next();
+
                         }
                     }
                 }

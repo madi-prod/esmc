@@ -30,11 +30,17 @@ public class TopicsChooseStageContoller implements Initializable {
 
     public void showTopic(ActionEvent actionEvent) throws IOException {
         String chooseTopic = (String) topicsList.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/textScene.fxml"));
+        FXMLLoader loader = getFXMLLoader();
         Parent page = loader.load();
 
-        TopicSceneController controller = loader.getController();
-        controller.setText(chooseTopic, caller);
+        if("testTopics.xml".equals(caller)){
+            TestSceneController controller = loader.getController();
+            controller.init(chooseTopic, caller);
+        } else {
+            TopicSceneController controller = loader.getController();
+            controller.setText(chooseTopic, caller);
+        }
+
         Scene scene = new Scene(page);
         Main.mainStage.hide();
         Main.mainStage.setTitle(chooseTopic);
@@ -54,5 +60,13 @@ public class TopicsChooseStageContoller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    private FXMLLoader getFXMLLoader(){
+        if("testTopics.xml".equals(caller)){
+            return new FXMLLoader(getClass().getResource("/application/view/testScene.fxml"));
+        } else {
+            return new FXMLLoader(getClass().getResource("/application/view/textScene.fxml"));
+        }
     }
 }
