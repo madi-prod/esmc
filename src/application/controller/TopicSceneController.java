@@ -36,8 +36,9 @@ public class TopicSceneController implements Initializable {
 
     public void returnToMainScene(ActionEvent actionEvent) throws IOException {
         Main.mainStage.hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../view/main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/application/view/main.fxml"));
         Main.mainStage.setScene(new Scene(root));
+        Main.mainStage.setTitle("Электронный учебно-методический комплекс");
         Main.mainStage.show();
     }
 

@@ -30,7 +30,7 @@ public class TopicsChooseStageContoller implements Initializable {
 
     public void showTopic(ActionEvent actionEvent) throws IOException {
         String chooseTopic = (String) topicsList.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/textScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/textScene.fxml"));
         Parent page = loader.load();
 
         TopicSceneController controller = loader.getController();

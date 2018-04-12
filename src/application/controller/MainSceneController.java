@@ -23,7 +23,7 @@ public class MainSceneController implements Initializable {
         if (actionEvent.getSource() == exitBtn) {
             Platform.exit();
         } else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/chooseDialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/chooseDialog.fxml"));
             Parent page = loader.load();
 
             TopicsChooseStageContoller controller = loader.getController();

@@ -7,17 +7,17 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.events.XMLEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 
 public class XmlParser {
 
-    final String RES_PATH = "res/xml/";
+    final String RES_PATH = "res/";
 
     public ObservableList<String> parsingTopics(String caller) {
         XMLInputFactory factory = XMLInputFactory.newInstance();
         try {
-            XMLStreamReader reader = factory.createXMLStreamReader(new FileInputStream(RES_PATH + caller));
+            ClassLoader cl = this.getClass().getClassLoader();
+            XMLStreamReader reader = factory.createXMLStreamReader(cl.getResourceAsStream(RES_PATH + caller));
             ObservableList<String> items = FXCollections.observableArrayList();
 
             while(reader.hasNext()) {
@@ -28,7 +28,7 @@ public class XmlParser {
                 reader.next();
             }
             return items;
-        } catch (FileNotFoundException | XMLStreamException ex) {
+        } catch (XMLStreamException ex) {
             ex.printStackTrace();
         }
         return null;
@@ -39,7 +39,8 @@ public class XmlParser {
 
         XMLInputFactory factory = XMLInputFactory.newInstance();
         try {
-            XMLStreamReader reader = factory.createXMLStreamReader(new FileInputStream(RES_PATH + caller));
+            ClassLoader cl = this.getClass().getClassLoader();
+            XMLStreamReader reader = factory.createXMLStreamReader(cl.getResourceAsStream(RES_PATH + caller));
 
             String content = "";
             while(reader.hasNext()) {
@@ -63,34 +64,9 @@ public class XmlParser {
                 }
                 reader.next();
             }
-        } catch (FileNotFoundException | XMLStreamException ex) {
+        } catch (XMLStreamException ex) {
             ex.printStackTrace();
         }
         return null;
     }
 }
-
-/*
-        while(reader.hasNext()) {
-        int evenType = reader.getEventType();
-        switch (evenType) {
-        case XMLEvent.START_DOCUMENT:
-        System.out.println("Start Document");
-        break;
-        case XMLEvent.START_ELEMENT:
-        System.out.println("Start Element: " + reader.getName());
-        break;
-        case XMLEvent.END_ELEMENT:
-        System.out.println("End Element: " + reader.getName());
-        break;
-        case XMLEvent.CHARACTERS:
-        System.out.println("Characters: " + reader.getText());
-        break;
-        }
-
-        reader.next();
-        }
-        if(reader.getEventType() == XMLEvent.END_DOCUMENT) {
-        System.out.println("End Document");
-        }
-        */
