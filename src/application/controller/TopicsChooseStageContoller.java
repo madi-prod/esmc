@@ -37,8 +37,8 @@ public class TopicsChooseStageContoller implements Initializable {
             TestSceneController controller = loader.getController();
             controller.init(chooseTopic, caller);
         } else {
-            TopicSceneController controller = loader.getController();
-            controller.setText(chooseTopic, caller);
+            TextSceneController controller = loader.getController();
+            controller.initScene(chooseTopic, caller);
         }
 
         Scene scene = new Scene(page);
