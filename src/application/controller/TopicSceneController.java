@@ -10,28 +10,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TextSceneController implements Initializable {
+public class TopicSceneController implements Initializable {
 
     @FXML
-    WebView browser;
+    TextArea textArea;
     @FXML
     Button closeBtn;
 
 
-    private WebEngine engine;
-
-    public void initScene(String topic, String caller) {
-        engine = browser.getEngine();
-        URL url = getClass().getResource("/res/01.htm");
-        engine.load(url.toExternalForm());
-
+    public void setText(String topic, String caller) {
+        XmlParser parser = new XmlParser();
+        String content = parser.parsingTopic(caller, topic);
+        if (content != null) {
+            textArea.setText(content);
+        }
     }
 
     public void returnToMainScene(ActionEvent actionEvent) throws IOException {
