@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,7 +26,7 @@ public class TestSceneController implements Initializable {
 
     }
 
-    public void init(String chooseTopic, String caller) {
+    public void initScene(int chooseTopic, String caller) {
 
     }
 

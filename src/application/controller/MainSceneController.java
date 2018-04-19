@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -63,6 +64,7 @@ public class MainSceneController implements Initializable {
         dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
         dialogStage.setScene(scene);
+        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("/res/image/icon.png")));
         dialogStage.showAndWait();
     }
 
