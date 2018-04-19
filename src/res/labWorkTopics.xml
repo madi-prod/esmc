@@ -2,86 +2,56 @@
 <topics>
         <topic>
             <name>1. Методы оценки погрешности вычислений</name>
-            <content></content>
         </topic>
         <topic>
-            <name>2. Решение нелинейных уравнений</name>
-            <content></content>
+            <name>2-3. Численное решение нелинейных уравнений</name>
         </topic>
         <topic>
-            <name>3. Решение систем уравнений</name>
-            <content></content>
+            <name>4. Численное решение СЛАУ</name>
         </topic>
         <topic>
-            <name>4. Параболическая интерполяция</name>
-            <content></content>
+            <name>5. Приближение фунцкии (параболическая интерполяция)</name>
         </topic>
         <topic>
-            <name>5. Квадратическая интерполяция</name>
-            <content></content>
+            <name>6. Приближение функции (квадратическая интерполяция)</name>
         </topic>
         <topic>
-            <name>6. Численное дифференцирование и интегрирование</name>
-            <content></content>
+            <name>7. Численное дифференцирование и интегрирование</name>
         </topic>
         <topic>
-            <name>7. Решение обыкновенных дифференциальных уравнений первого порядка</name>
-            <content></content>
+            <name>8. Решение обыкновенных дифференциальных уравнений</name>
         </topic>
         <topic>
-            <name>8. Решение систем обыкновенных дифференциальных уравнений первого порядка</name>
-            <content></content>
+            <name>9. Приблежённое решение систем дифференциальных уравнений</name>
         </topic>
         <topic>
-            <name>9. Решение краевых задач</name>
-            <content></content>
+            <name>10. Метод стрельбы</name>
         </topic>
         <topic>
-            <name>10. Обработка экспериментальных результатов. Регрессионный анализ</name>
-            <content></content>
-        </topic>
-        <topic>
-            <name>11. Дифференциальные уравнения в частных производных</name>
-            <content></content>
+            <name>11. Отсутствует</name>
         </topic>
         <topic>
             <name>12. Многомерная безусловная оптимизация</name>
-            <content></content>
         </topic>
         <topic>
-            <name>13. Транспортные задачи</name>
-            <content></content>
+            <name>13. Отсутствует</name>
         </topic>
         <topic>
-            <name>14. Линейное программирование. Симплекс метод</name>
-            <content></content>
+            <name>14. Линейное программирование</name>
         </topic>
         <topic>
-            <name>15. Динамическое программирование</name>
-            <content></content>
+            <name>15. Отсутствует</name>
         </topic>
         <topic>
-            <name>16. Сетевые модели</name>
-            <content></content>
+            <name>16. Моделирование процессов методом Монте-Карло</name>
         </topic>
         <topic>
-            <name>17. Моделирование случайных процессов</name>
-            <content></content>
+            <name>17. Отсутствует</name>
         </topic>
         <topic>
-            <name>18. Системы массового обслуживания</name>
-            <content></content>
+            <name>18. Отсутствует</name>
         </topic>
         <topic>
-            <name>19. Моделирование физических процессов с использованием программного обеспечения общего и специального назначения</name>
-            <content></content>
-        </topic>
-        <topic>
-            <name>20. Методы визуализации</name>
-            <content></content>
-        </topic>
-        <topic>
-            <name>21. Компьютерное моделирование</name>
-            <content></content>
+            <name>19. Отсутствует</name>
         </topic>
 </topics>

@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,21 +28,22 @@ public class TopicsChooseStageContoller implements Initializable {
     }
 
     public void showTopic(ActionEvent actionEvent) throws IOException {
-        String chooseTopic = (String) topicsList.getSelectionModel().getSelectedItem();
+        int topicIndex = topicsList.getSelectionModel().getSelectedIndex();
+        String topicName = (String) topicsList.getSelectionModel().getSelectedItem();
         FXMLLoader loader = getFXMLLoader();
         Parent page = loader.load();
 
         if("testTopics.xml".equals(caller)){
             TestSceneController controller = loader.getController();
-            controller.init(chooseTopic, caller);
+            controller.initScene(topicIndex, caller);
         } else {
-            TopicSceneController controller = loader.getController();
-            controller.setText(chooseTopic, caller);
+            TextSceneController controller = loader.getController();
+            controller.initScene(topicIndex, caller);
         }
 
         Scene scene = new Scene(page);
         Main.mainStage.hide();
-        Main.mainStage.setTitle(chooseTopic);
+        Main.mainStage.setTitle(topicName);
         Main.mainStage.setScene(scene);
         Main.mainStage.show();
     }
