@@ -7,6 +7,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.events.XMLEvent;
+import java.util.ArrayList;
 
 public class XmlParser {
 
@@ -33,38 +34,44 @@ public class XmlParser {
         return null;
     }
 
-    public String parsingTopic(String caller, String topic) {
-        Boolean found = false;
-
+    public ArrayList<Question> parsingTest(int caller) {
         XMLInputFactory factory = XMLInputFactory.newInstance();
         try {
             ClassLoader cl = this.getClass().getClassLoader();
-            XMLStreamReader reader = factory.createXMLStreamReader(cl.getResourceAsStream(RES_PATH + caller));
+            String path = RES_PATH + "test/" + (caller + 1) + ".xml";
+            XMLStreamReader reader = factory.createXMLStreamReader(cl.getResourceAsStream(path));
 
-            String content = "";
+            ArrayList<Question> questions = new ArrayList<>();
+
             while(reader.hasNext()) {
-                if(reader.getEventType() == XMLEvent.START_ELEMENT && "name".equals(reader.getLocalName())) {
+                if(reader.getEventType() == XMLEvent.START_ELEMENT && "question".equals(reader.getLocalName())) {
+                    Question question = new Question();
+                    ArrayList<String> tempVarAnswers = new ArrayList<>();
                     reader.next();
-                    if(topic.equals(reader.getText())){
-                        reader.next();
-                        reader.next();
-                       while(reader.getEventType() != XMLEvent.END_ELEMENT){
-                            found = true;
-                            switch (reader.getEventType()){
-                                case XMLEvent.CHARACTERS:
-                                    if(!"".equals(reader.getText().trim()))
-                                    content += reader.getText();
-                            }
+                    while(!(reader.getEventType() == XMLEvent.END_ELEMENT && "question".equals(reader.getLocalName()))) {
+                        if(reader.getEventType() == XMLEvent.START_ELEMENT && "content".equals(reader.getLocalName())) {
                             reader.next();
-
+                            question.setContent(reader.getText());
+                        } else {
+                            if(reader.getEventType() == XMLEvent.START_ELEMENT && "answer".equals(reader.getLocalName())) {
+                                if("true".equals(reader.getAttributeValue(null, "isRight"))) {
+                                    reader.next();
+                                    question.setRightAnswer(reader.getText());
+                                    tempVarAnswers.add(reader.getText());
+                                } else {
+                                    reader.next();
+                                    tempVarAnswers.add(reader.getText());
+                                }
+                            }
                         }
+                        reader.next();
                     }
-                }
-                if(found) {
-                    return content;
+                    question.setVarAnswer(tempVarAnswers);
+                    questions.add(question);
                 }
                 reader.next();
             }
+            return questions;
         } catch (XMLStreamException ex) {
             ex.printStackTrace();
         }

@@ -35,7 +35,7 @@ public class TopicsChooseStageContoller implements Initializable {
 
         if("testTopics.xml".equals(caller)){
             TestSceneController controller = loader.getController();
-            controller.initScene(topicIndex, caller);
+            controller.initScene(topicIndex);
         } else {
             TextSceneController controller = loader.getController();
             controller.initScene(topicIndex, caller);
